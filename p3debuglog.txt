@@ -1,1 +1,94 @@
+ gcc -g p3final.c -lm
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8e9: file p3final.c, line 45.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p3final.c:45
+45    int n = input();
+(gdb) s
+input () at p3final.c:11
+11  {
+(gdb) n
+13    printf("Enter the number\n");
+(gdb) n
+Enter the number
+14    scanf("%d",&n);
+(gdb) n
+53
+15    return n;
+(gdb) n
+16  }
+(gdb) n
+main () at p3final.c:46
+46    int isp = isprime(n);
+(gdb) s
+isprime (n=53) at p3final.c:20
+20    if (n==0 || n==1) 
+(gdb) n
+24    if (n==2)
+(gdb) n
+28    for(int i= 2; i<= sqrt(n);i++)
+(gdb) n
+30      if(n%i==0)
+(gdb) n
+28    for(int i= 2; i<= sqrt(n);i++)
+(gdb) n
+30      if(n%i==0)
+(gdb) n
+28    for(int i= 2; i<= sqrt(n);i++)
+(gdb) n
+30      if(n%i==0)
+(gdb) n
+28    for(int i= 2; i<= sqrt(n);i++)
+(gdb) n
+30      if(n%i==0)
+(gdb) n
+28    for(int i= 2; i<= sqrt(n);i++)
+(gdb) n
+30      if(n%i==0)
+(gdb) n
+28    for(int i= 2; i<= sqrt(n);i++)
+(gdb) n
+30      if(n%i==0)
+(gdb) n
+28    for(int i= 2; i<= sqrt(n);i++)
+(gdb) n
+33    return 1;
+(gdb) n
+34  }
+(gdb) n
+main () at p3final.c:47
+47    output(n,isp);
+(gdb) s
+output (n=53, isp=1) at p3final.c:37
+37    if(isp == 0)
+(gdb) n
+40      printf("%d is a prime number\n",n);
+(gdb) n
+53 is a prime number
+41  }
+(gdb) n
+main () at p3final.c:48
+48    return 0;
+(gdb) c
+Continuing.
+[Inferior 1 (process 1705) exited normally]
+(gdb) 

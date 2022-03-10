@@ -1,1 +1,132 @@
+gcc -g p1final.c
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8a9: file p1final.c, line 23.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p1final.c:23
+23  {
+(gdb) n
+25    input(&num1,&den1,&num2,&den2);
+(gdb) s
+input (num1=0x7fff1d002610, den1=0x7fff1d002614, num2=0x7fff1d002618, 
+    den2=0x7fff1d00261c) at p1final.c:4
+4     printf("Enter the values for numerator 1 and  denominator 1 and numerator 2 and denominator2\n");
+(gdb) n
+Enter the values for numerator 1 and  denominator 1 and numerator 2 and denominator2
+5     scanf("%d%d%d%d",num1,den1,num2,den2);  
+(gdb) n
+1
+2
+1
+4
+6   }
+(gdb) n
+main () at p1final.c:26
+26    add(num1,den1,num2,den2,&num3,&den3);
+(gdb) s
+add (num1=1, den1=2, num2=1, den2=4, num3=0x7fff1d002620, den3=0x7fff1d002624)
+    at p1final.c:10
+10    a=(num1*den2)+(num2*den1);
+(gdb) n
+11    b=(den1*den2);
+(gdb) n
+12    for(int i =1; i<=a && i<=b; i++)
+(gdb) p a
+$1 = 6
+(gdb) p b
+$2 = 8
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+14        gcd = i;
+(gdb) n
+12    for(int i =1; i<=a && i<=b; i++)
+(gdb) b
+Breakpoint 2 at 0x56014b200818: file p1final.c, line 12.
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+14        gcd = i;
+(gdb) n
+
+Breakpoint 2, add (num1=1, den1=2, num2=1, den2=4, num3=0x7fff1d002620, 
+    den3=0x7fff1d002624) at p1final.c:12
+12    for(int i =1; i<=a && i<=b; i++)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+
+Breakpoint 2, add (num1=1, den1=2, num2=1, den2=4, num3=0x7fff1d002620, 
+    den3=0x7fff1d002624) at p1final.c:12
+12    for(int i =1; i<=a && i<=b; i++)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+
+Breakpoint 2, add (num1=1, den1=2, num2=1, den2=4, num3=0x7fff1d002620, 
+    den3=0x7fff1d002624) at p1final.c:12
+12    for(int i =1; i<=a && i<=b; i++)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) p gcd
+$3 = 2
+(gdb) n
+
+Breakpoint 2, add (num1=1, den1=2, num2=1, den2=4, num3=0x7fff1d002620, 
+    den3=0x7fff1d002624) at p1final.c:12
+12    for(int i =1; i<=a && i<=b; i++)
+(gdb) n
+13      if(a % i == 0 && b % i == 0)
+(gdb) n
+
+Breakpoint 2, add (num1=1, den1=2, num2=1, den2=4, num3=0x7fff1d002620, 
+    den3=0x7fff1d002624) at p1final.c:12
+12    for(int i =1; i<=a && i<=b; i++)
+(gdb) n
+15    *num3=a/gcd;
+(gdb) n
+16    *den3=b/gcd;
+(gdb) n
+17  }
+(gdb) n
+main () at p1final.c:27
+27    output(num1,den1,num2,den2,num3,den3);
+(gdb) s
+output (num1=1, den1=2, num2=1, den2=4, num3=3, den3=4) at p1final.c:20
+20    printf("%d/%d + %d/%d = %d/%d",num1,den1,num2,den2,num3,den3);
+(gdb) n
+21  }
+(gdb) n
+main () at p1final.c:28
+28    return 0; 
+(gdb) p num3
+$4 = 3
+(gdb) p den3
+$5 = 4
+(gdb) n
+29  }(gdb) n
+__libc_start_main (main=0x56014b2008a1 <main>, argc=1, argv=0x7fff1d002718, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fff1d002708) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) n
+1/2 + 1/4 = 3/4[Inferior 1 (process 1378) exited normally]
+(gdb) n

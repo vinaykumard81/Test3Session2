@@ -1,1 +1,112 @@
+gcc -g p7final.c -lm
+ ./a.out
+input a fraction
+1
+2
+input a fraction
+1
+4
+The sum of 1/2 and 1/4 is 3/4 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x8a7: file p7final.c, line 45.
+(gdb) r
+Starting program: /home/runner/Test3Session2/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p7final.c:45
+45    f1=input_fraction();
+(gdb) s
+input_fraction () at p7final.c:19
+19  {
+(gdb) n
+21    printf("input a fraction\n");
+(gdb) n
+input a fraction
+22    scanf("%d%d",&f.num,&f.den);
+(gdb) n
+1
+2
+23    return f;
+(gdb) n
+24  }
+(gdb) n
+main () at p7final.c:46
+46    f2=input_fraction();
+(gdb) s
+input_fraction () at p7final.c:19
+19  {
+(gdb) n
+21    printf("input a fraction\n");
+(gdb) n
+input a fraction
+22    scanf("%d%d",&f.num,&f.den);
+(gdb) n
+1
+4
+23    return f;
+(gdb) n
+24  }
+(gdb) n
+main () at p7final.c:47
+47    sum = add_fraction(f1,f2);
+(gdb) s
+add_fraction (f1=..., f2=...) at p7final.c:29
+29    sum.num = (f1.num*f2.den)+(f2.num*f1.den);
+(gdb) n
+30    sum.den = f1.den*f2.den;
+(gdb) n
+31    int g = gcd(sum.num,sum.den);
+(gdb) n
+32    sum.num = sum.num/g;
+(gdb) n
+33    sum.den = sum.den/g;
+(gdb) n
+34    return sum;
+(gdb) n
+35  }
+(gdb) n
+main () at p7final.c:48
+48    output(f1,f2,sum);
+(gdb) s
+output (f1=..., f2=..., sum=...) at p7final.c:39
+39    printf("The sum of %d/%d and %d/%d is %d/%d \n",f1.num,f1.den,f2.num,f2.den,sum.num,sum.den);
+(gdb) p f1.den
+$1 = 2
+(gdb) p f1.num
+$2 = 1
+(gdb) p f2.num
+$3 = 1
+(gdb) p f2.den
+$4 = 4
+(gdb) p sum.num
+$5 = 3
+(gdb) p sum.den
+$6 = 4
+(gdb) n
+The sum of 1/2 and 1/4 is 3/4 
+40  }
+(gdb) n
+main () at p7final.c:49
+49    return 0;
+(gdb) n
+50  }
+(gdb) c
+Continuing.
+[Inferior 1 (process 219) exited normally]
+(gdb) 
